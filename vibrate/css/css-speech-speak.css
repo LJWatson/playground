@@ -1,0 +1,9 @@
+p[id="speak"]
+{
+speak: normal;
+}
+
+p[id="speak"]:hover, p[id="speak"]:focus
+{
+background-color: #c8a2c8;
+}
