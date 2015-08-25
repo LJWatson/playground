@@ -11,12 +11,12 @@
 		{
 			var vibrateOnce = function (e)
 			{
-				window.navigator.vibrate(1000);
+				window.navigator.vibrate(500);
 			};
 				
 			var vibrateTwice = function (e)
 			{
-				window.navigator.vibrate([1000, 500, 1000]);
+				window.navigator.vibrate([500, 500, 500]);
 			};
 			
 			var vibrateMore = function (e)
