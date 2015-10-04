@@ -13,11 +13,21 @@
 <body>
 <h1>SVG desk</h1>
 
-<svg width="90%" height="90%" role="img" aria-labelledby="title" aria-describedby="desc">
-<title id="title">My desk</title>
-<desc id="desc">Top-down view of a rectangular desk, with a curve inset on the bottom right hand side.</desc>
+<svg width="90%" height="90%" role="img" aria-labelledby="desktitle" aria-describedby="deskDesc">
+<title id="deskTitle">My desk</title>
+<desc id="deskDesc">Top-down view of a rectangular desk, with a curve inset on the bottom right hand side.</desc>
 
+<!-- Basic desk outline. -->
 <path style="fill: #ca8f42;" d="M50 50 L1000 50 L1000 600 L750 600 C700 550, 625 510, 500 500 L50 500 Z" />
+
+<!-- Computer. -->
+<g role="img" aria-describedby="computerDesc">
+<desc id="computerDesc">Black desktop computer, in the top right corner of the desk.</desc>
+
+<rect style="fill: #000000;" x="925" y="50" width="75" height="200" />
+<text style="fill: #ffffff;" x="930" y="75">Computer</text>
+</g>
+
 </svg>
 
 </body>
