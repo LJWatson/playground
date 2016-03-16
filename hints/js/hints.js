@@ -1,66 +1,86 @@
-(function ()
-{
-	
-	function addHints ()
-	{
+(function() {
+    'use strict';
+
+    var hints, hoverTimeout, speakHint;
+
+    function init() {
+
+        // Add foreach capability.
+        if (typeof NodeList.prototype.forEach === 'undefined') {
+            NodeList.prototype.forEach = Array.prototype.forEach;
+        }
+
+        //Get all elements with data-hint attribute.
+        hints = document.querySelectorAll('[data-hint]'), hoverTimeout;
 		
-		//Put JS into strict mode.
-		'use strict';
+		// Create speech callback.	  
+        speakHint = function(e) {
+            var msg = new SpeechSynthesisUtterance(e.target.dataset.hint);
+            window.speechSynthesis.speak(msg);
+        };
 
-		// Add foreach capability.
-		if (typeof NodeList.prototype.forEach === 'undefined')
-		{
-			NodeList.prototype.forEach = Array.prototype.forEach;
-		}
+        document.getElementById('checkbox').addEventListener('click', toggleHints);
+    }
 
-		if (window.SpeechSynthesisUtterance === undefined)
-		{
-			alert("This browser doesn't support the Web Speech API");
-		}
-		else
-		{
-			
-			//Get all elements with data-hint attribute.
-			var hints = document.querySelectorAll('[data-hint]'), 
-			hoverTimeout;
-			
-			var speakHint = function (e)
-			{
-				var msg = new SpeechSynthesisUtterance(e.target.dataset.hint);
-				window.speechSynthesis.speak(msg);
-			};
-			
-			//Iterate through hints to add listener.
-			hints.forEach(function (hint)
-			{
-				
-				hint.addEventListener('focus', function (e)
-				{
-					window.clearTimeout(hoverTimeout);
-					hoverTimeout = window.setTimeout(speakHint, 500, e);
-				});
-				
-				hint.addEventListener('blur', function ()
-				{
-					window.clearTimeout(hoverTimeout);
-				})
-					
-				hint.addEventListener('mouseover', function (e)
-				{
-					window.clearTimeout(hoverTimeout);
-					hoverTimeout = window.setTimeout(speakHint, 500, e);
-				});
-				
-				hint.addEventListener('mouseout', function ()
-				{
-					window.clearTimeout(hoverTimeout);
-				})
-			});
-		}
-	}
-	
-	document.addEventListener("DOMContentLoaded", function ()
-	{
-		addHints();
-	});
-	})();
+    function toggleHints() {
+
+        if (!checkbox.getAttribute('checked')) {
+            enableHints();
+            checkbox.setAttribute('checked', true);
+        } else {
+            disableHints();
+            checkbox.removeAttribute('checked');
+        }
+    }
+
+    function focusEventListener(e) {
+        hoverTimeout = window.setTimeout(speakHint, 500, e);
+    }
+
+    function blurEventListener(e) {
+        window.clearTimeout(hoverTimeout);
+    }
+
+    function mouseoverEventListener(e) {
+        hoverTimeout = window.setTimeout(speakHint, 500, e);
+    }
+
+    function mouseoutEventListener(e) {
+        window.clearTimeout(hoverTimeout);
+    }
+
+    function enableHints() {
+
+		// Check for Web Speech support.
+		if (window.SpeechSynthesisUtterance === undefined) {
+            alert("This browser doesn't support the Web Speech API");
+        } else {
+
+            //Iterate through hints to add listener.
+            hints.forEach(function(hint) {
+
+                hint.addEventListener('focus', focusEventListener);
+                hint.addEventListener('blur', blurEventListener);
+                hint.addEventListener('mouseover', mouseoverEventListener);
+                hint.addEventListener('mouseout', mouseoutEventListener);
+
+            });
+        }
+    }
+
+    function disableHints() {
+
+        //Iterate through hints to remove listener.
+        hints.forEach(function(hint) {
+
+            hint.removeEventListener('focus', focusEventListener);
+            hint.removeEventListener('blur', blurEventListener);
+            hint.removeEventListener('mouseover', mouseoverEventListener);
+            hint.removeEventListener('mouseout', mouseoutEventListener);
+        });
+    }
+
+    document.addEventListener("DOMContentLoaded", function() {
+        init();
+    });
+})();

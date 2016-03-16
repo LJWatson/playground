@@ -7,20 +7,24 @@
 <meta name="viewport" content="width=device-width">
 <title>Web Speech API SpeechSynthesis interface: hints demo</title>
 
-<link rel="stylesheet" type="text/css" href="../css/basic.css">
+<link rel="stylesheet" type="text/css" href="css/basic.css">
+<link rel="stylesheet" type="text/css" href="css/button.css">
 <script src="js/hints.js"></script>
 </head>
 
 <body>
 <h1>Web Speech API SpeechSynthesis interface: hints demo</h1>
 
-<p>This demo uses the <a href="<a href="https://dvcs.w3.org/hg/speech-api/raw-file/tip/speechapi.html#tts-section">SpeechSynthesis interface</a> of the <a href="https://dvcs.w3.org/hg/speech-api/raw-file/tip/speechapi.html#dfn-ttsgetvoices">Web Speech API</a>. Check <a href="http://caniuse.com/#feat=speech-synthesis">CanIUse.com</a> for current browser support.</p>
+<p>This demo uses the <a href="<a href="https://dvcs.w3.org/hg/speech-api/raw-file/tip/speechapi.html#tts-section">SpeechSynthesis interface</a> of the <a href="https://dvcs.w3.org/hg/speech-api/raw-file/tip/speechapi.html#dfn-ttsgetvoices">Web Speech API</a>.</p>
 
 <h2>Example</h2>
 
-<p>When keyboard or mouse focus is placed on the button, a hint is spoken by the default platform Text To Speech (TTS) voice.</p>
+<div class="example">
+<form>
+<label>
+<input type="checkbox" id="checkbox">Enable spoken hints</label>
+</form>
 
-<div id="example">
 <button data-hint="Use space or enter to activate">Foo</button>
 </div>
 
@@ -28,7 +32,7 @@
 
 <p>This technique could be used to provide help for people with cognitive disabilities, or people unfamiliar with the web. It would not be needed for simple controls (this is just a demo), but it could be used for complex controls like sliders, tabs etc.</p>
 
-<p>If help was made available in this way, it would need to be made "opt-in". Most people will not want the hints to be spoken.</p>
+<p>Check <a href="http://caniuse.com/#feat=speech-synthesis">CanIUse.com</a> for current browser support.</p>
 
 </body>
 </html>
