@@ -1,40 +1,53 @@
 function init()
-{
-	
+{	
+
 	// Check for API support.
 	if(window.SpeechSynthesisUtterance === undefined)
 	{
 		alert("Speech API not supported");
 	} else
 	{
-		document.getElementById("button").addEventListener("click", displayVoices);
-	}
-}
-
-function displayVoices(event)
-{
-	
-	var tts;
-
-	// Workaround for Chrome bug (getVoices() fails onload).
-	var watch = setInterval(function()
-	{
-
-		// Retrieve and display available TTS engines.
-		tts = speechSynthesis.getVoices();
-		var voices = document.getElementById("voices");
+		var tts;
 		
-		if(tts.length !== 0)
+		// Workaround for Chrome bug (getVoices() fails onload).
+		var watch = setInterval(function()
 		{
 			
-			for(var i = 0; i < tts.length; i++)
+			// Retrieve and display available TTS engines.
+			tts = speechSynthesis.getVoices();
+			var voices = document.getElementById("voices");
+			
+			if(tts.length !== 0)
 			{
-				voices.innerHTML += tts[i].name + '<br>';
+				
+				for(var i = 0; i < tts.length; i++)
+				{
+					
+					voices.innerHTML += '<option value="' + tts[i].name + '">' + tts[i].name + '</option>';
+				}
+				
+				clearInterval(watch);
 			}
-
-			clearInterval(watch);
-		}
-	}, 1);
+		}, 1);
+		
+		document.getElementById("button").addEventListener('click', function(event)
+		{
+			
+			// Retrieve index of selected TTS engine.
+			var selectedVoice = voices.selectedIndex;
+			
+			// Create speech object.
+			var utterance = new SpeechSynthesisUtterance();
+			utterance.text = voices[selectedVoice].text;
+			
+			
+			// Assign selected TTS engine to speech object.
+			utterance.voice = tts[selectedVoice];
+			
+			// Speak utterance.
+			window.speechSynthesis.speak(utterance);
+		});
+	}
 }
 
 window.onload = init;

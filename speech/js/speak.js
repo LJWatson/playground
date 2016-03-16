@@ -1,25 +1,28 @@
-function init()
-{
-	
-	// Check for API support.
-	if(window.SpeechSynthesisUtterance === undefined)
-	{
-		alert("Speech API not supported");
-	} else
-	{
-		document.getElementById("button").addEventListener("click", speakUtterance);
-	}
-}
+(function() {
+    'use strict';
 
-function speakUtterance(event)
-{
-	
-	// Create speech object.
-	var utterance = new SpeechSynthesisUtterance();
-	utterance.text = "Tequila";
-	
-	// Speak utterance.
-	window.speechSynthesis.speak(utterance);
-}
+    function init() {
 
-window.onload = init;
+        // Check for Web Speech support.
+        if (window.SpeechSynthesisUtterance === undefined) {
+            alert("Speech API not supported");
+        } else {
+            document.getElementById("button").addEventListener("click", speakUtterance);
+        }
+    }
+
+    function speakUtterance(event) {
+
+        // Create speech object.
+        var utterance = new SpeechSynthesisUtterance();
+        utterance.text = "Tequila";
+
+        // Speak utterance.
+        window.speechSynthesis.speak(utterance);
+    }
+
+    document.addEventListener("DOMContentLoaded", function() {
+        init();
+    });
+
+})();
