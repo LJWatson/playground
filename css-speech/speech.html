@@ -7,45 +7,39 @@
 <meta name="viewport" content="width=device-width">
 <title>CSS Speech demo</title>
 
-<link rel="stylesheet" type="text/css" href="../css/basic.css">
+<link rel="stylesheet" type="text/css" href="css/basic.css">
+<link rel="stylesheet" type="text/css" href="css/speech.css">
 <script src="js/speech.js"></script>
 </head>
 
 <body>
 <h1>CSS Speech demo</h1>
 
-<p>The demo on this page uses the <a href="https://dvcs.w3.org/hg/speech-api/raw-file/tip/speechapi.html#tts-section">SpeechSynthesis interface</a>  of the <a href="https://dvcs.w3.org/hg/speech-api/raw-file/tip/speechapi.html">Web Speech API</a>, to simulate support for the <a href="http://www.w3.org/TR/css3-speech/">CSS Speech module</a>. Check <a href="http://caniuse.com/#feat=speech-synthesis">CanIUse.com</a> for current browser support.</p>
+<p>This demo uses the <a href="https://dvcs.w3.org/hg/speech-api/raw-file/tip/speechapi.html#tts-section">SpeechSynthesis interface</a>  of the <a href="https://dvcs.w3.org/hg/speech-api/raw-file/tip/speechapi.html">Web Speech API</a>, to simulate support for the <a href="http://www.w3.org/TR/css3-speech/">CSS Speech module</a>.</p> 
 
 <h2>Example</h2>
 
-<p>Choose a Text To Speech (TTS) voice, then use the tab key to move through the content.</p>
-
-<div id="example">
-
+<div class="example">
 <label for="tts">Choose TTS</label>
 <br>
 <select id="tts"></select>
 
 <p id="normal" tabindex="0" style="speak: normal;">This sounds normal.</p>
-
 <p id="loud" tabindex="0" style="speak: normal; voice-volume: loud;">This sounds loud.</p>
-
 <p id="quiet" tabindex="0" style="speak: normal; voice-volume: soft;">This sounds quiet.</p>
-
 <p id="fast" tabindex="0" style="speak: normal; voice-rate: fast;">This sounds fast.</p>
-
 <p id="slow" tabindex="0" style="speak: normal; voice-rate: slow;">This sounds slow.</p>
-
 <p id="high" tabindex="0" style="speak: normal; voice-pitch: high;">This sounds high.</p>
-
 <p id="low" tabindex="0" style="speak: normal; voice-pitch: low;">This sounds low.</p>
-
 <p id="silent" tabindex="0" style="speak: none;">This says nothing.</p>
 </div>
 
 <h2>Notes</h2>
 
 <p>This demo demonstrates how a screen reader might respond to properties from the CSS Speech module. <a href="http://tink.uk/using-the-web-speech-api-to-simulate-css-speech-support/">Using the Web Speech API to simulate CSS Speech support</a> has more information.</p>
+
+<p>Check <a href="http://caniuse.com/#feat=speech-synthesis">CanIUse.com</a> for browser support.</p>
+>
 
 </body>
 </html>

@@ -55,6 +55,7 @@ code {
 }
 
 .example {
-    margin-top: 1em;
+    width: 50%;
+	margin-top: 1em;
     margin-bottom: 2em;
 }

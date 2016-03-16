@@ -5,7 +5,7 @@
 
         // Check for Web Speech support.
         if (window.SpeechSynthesisUtterance === undefined) {
-            alert("Speech API not supported");
+            alert("This browser does not support the Web Speech API");
         } else {
             document.getElementById("button").addEventListener("click", speakUtterance);
         }
