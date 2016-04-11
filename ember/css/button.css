@@ -1,11 +1,11 @@
 tequila-button {
     display: block;
-	height: 35px;
-	width: 250px;
+	  height: 30px;
+	  width: 230px;
     font-size: 1.1em;
     font-weight: bold;
-    padding: 10px 15px;
-    margin 20px auto;
+    padding: 10px 0px 0px 20px;
+    margin: 20px auto;
     color: #ccc;
     background-color: #555;
     border: 0 none;
