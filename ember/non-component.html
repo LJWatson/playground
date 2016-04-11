@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<title>Not accessible Ember component</title>
+
+<link rel="stylesheet" type="text/css" href="css/basic.css">
+<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/normalize/2.1.0/normalize.css">
+<link rel="stylesheet" type="text/css" href="css/button.css">
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="http://builds.handlebarsjs.com.s3.amazonaws.com/handlebars-v1.3.0.js"></script>
+<script src="http://builds.emberjs.com/tags/v1.5.1/ember.js"></script>
+</head>
+
+<body>
+<script>
+App = Ember.Application.create();
+
+App.Router.map(function() {});
+
+App.IndexRoute = Ember.Route.extend({
+model: function() {
+return {name: "Reposado"};
+}
+});
+
+App.TequilaButtonComponent = Ember.Component.extend({
+tagName: 'tequila-button',
+nameBinding: 'tequila.name',
+attributeBindings: ['tabindex'],
+answer: false,
+
+label: function() {
+return "Is " + this.get('name') + " tequila good?";
+}.property('name'),
+
+tabindex: 1,
+
+click: function(event) {
+alert('Yes');
+}
+});
+</script>
+
+<script type="text/x-handlebars">
+<h1>Not accessible component example</h1>
+<div class="example">
+
+{{outlet}}
+</script>
+
+<script type="text/x-handlebars" data-template-name="index">
+{{tequila-button tequila=model}}
+</script>
+
+<script type="text/x-handlebars" data-template-name="components/tequila-button">
+{{label}}
+</script>
+</div>
+</body>
+</html>

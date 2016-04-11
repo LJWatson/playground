@@ -36,7 +36,6 @@
                 var utterance = new SpeechSynthesisUtterance();
                 utterance.text = voices[selectedVoice].text;
 
-
                 // Assign selected TTS engine to speech object.
                 utterance.voice = tts[selectedVoice];
 
