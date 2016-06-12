@@ -1,0 +1,33 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<title>CSS before/after selectors</title>
+
+<link rel="stylesheet" type="text/css" href="css/basic.css">
+<style>
+#a:after {
+content: ' Makes me happy!';
+}
+</style>
+</head>
+
+<body>
+<h1>CSS before/after selectors</h1>
+
+
+<p>This example uses the CSS <a href="https://www.w3.org/TR/css3-selectors/#gen-content">after selector</a> to append content to the link text.</p>
+
+<h2>Example</h2>
+<div class="example">
+<a id="a" href="/">Tequila!</a>
+</div>
+<h2>Notes</h2>
+
+<p>CSS generated content is not found in the DOM, but it is <a href="http://tink.uk/accessibility-support-for-css-generated-content/">accessibility supported</a> in most browsers.</p>
+
+</body>
+</html>
