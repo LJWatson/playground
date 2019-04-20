@@ -6,7 +6,6 @@ class ReadButton extends HTMLElement {
         // set up the read button        
         this.setAttribute("role", "button");
         this.setAttribute("tabindex", "0");
-        this.setAttribute("aria-pressed", "false");
 
         // Get content to be read.
         var contentRef = this.getAttribute("content");
