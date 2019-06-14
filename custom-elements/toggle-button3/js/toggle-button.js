@@ -1,10 +1,10 @@
 /*
  * Author: Léonie Watson @LeonieWatson
- * Notes: Autonomous custom element
+ * Notes: Customised custom element
  * State: Experimental (not intended for production)
  */
 
-class ToggleButton extends HTMLElement {
+class ToggleButton extends HTMLButtonElement {
 
     constructor() {
         super();
@@ -12,16 +12,10 @@ class ToggleButton extends HTMLElement {
     }
 
     connectedCallback() {
-        this.setAttribute("tabindex", "0");
-        this.setAttribute("role", "button");
         this.setAttribute("aria-pressed", "false");
 
         this.addEventListener("click", togglePressed);
-        this.addEventListener("keydown", function (e) {
-            if (e.keyCode == 13 || e.keyCode == 32) {
-                togglePressed();
-            }
-        });
+
     }
 
     disconnectedCallback() {
@@ -38,4 +32,4 @@ function togglePressed() {
     }
 }
 
-customElements.define("toggle-button", ToggleButton);
+customElements.define("toggle-button", ToggleButton, { extends: "button" });

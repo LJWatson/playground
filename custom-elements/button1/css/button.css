@@ -1,7 +1,7 @@
-toggle-button {
+button {
     display: inline-block;
-    height: 15px;
-    width: 65px;
+    height: 33px;
+    width: 95px;
     font-size: 1.1em;
     font-weight: bold;
     padding: 10px 15px;
@@ -15,11 +15,11 @@ toggle-button {
     text-align: center;
 }
 
-    toggle-button:hover, toggle-button:focus {
+    button:hover, button:focus {
         background-color: #820bbb;
     }
 
-    toggle-button[aria-pressed="true"] {
+    button[aria-pressed="true"] {
         color: #fff;
         padding: 11px 12px 9px 16px;
         text-shadow: 0 -1px 0 #444, 0 0 5px #ffd, 0 0 8px #fff;
