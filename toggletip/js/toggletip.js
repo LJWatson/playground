@@ -16,7 +16,7 @@
 
 	  if (tip.hasAttribute('hidden')) {
 	    button.setAttribute('aria-expanded', 'true');
-	    content.innerHTML = "This information will answer your question... Press escape to close this tooltip.";
+	    content.innerHTML = "This information will answer your question...";
 	    tip.removeAttribute('hidden');
 		} else {
 	    button.setAttribute('aria-expanded', 'false');
